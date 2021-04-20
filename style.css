@@ -1,4 +1,33 @@
+/* Gobal */
+:root {
+    /* Color */
+--color-black: #000000;
+--color-white: #ffffff;
+--color-light-white: #eeeeee;
+--color-dark-white: #bdbdbd;
+--color-white-blue: #96ddf8;
+--color-dark-blue: #03989e;
+--color-dark-grey: #4d4d4d;
+--color-grey: #616161;
+--color-light-grey: #7c7979;
+--color-orange: #ff6863;
+--color-yellow: #fff7d1;
+--color-dark-yellow: #feb546;
+    /* Font size */
+
+    /* Font weight */
+
+    /* size */
+}
+
+/* Universe tags */
+* {
+    box-sizing: border-box;
+}
+
+
 .navbar__logo > img {
     width: 16px;
     height: 16px;
 }
+
