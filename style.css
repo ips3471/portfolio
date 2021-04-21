@@ -57,6 +57,9 @@ button {
 #contact {
     text-align: center;
     padding: calc(var(--space-side)*1);
+    margin: auto;
+}
+.section-width {
     max-width: 1200px;
     margin: auto;
 }
@@ -233,7 +236,76 @@ p {
 }
 
 /* Skills */
+#skills {
+    background-color: var(--color-yellow);
+}
+.skills__title {
+    padding-top: var(--space-column);
+}
+.skills__paragraph {
+    padding: 0 calc(var(--space-side)*2.5);
+    padding-bottom: var(--space-column);
+}
+.skills__chart__skillset,
+.skills__chart__tools,
+.skills__chart__etc {
+    padding: var(--space-side);
+    color: var(--color-light-white);
+}
+.skills__chart {
+    display: flex;
+    justify-content: center;
+    padding: 0 calc(var(--space-side)*2.5);
+}
+.skills__chart__skillset {
+    background-color: var(--color-dark-grey);
+    flex-basis: 70%;
+}
+.skills__chart__skillset__title {
+    margin-bottom: var(--space-text);
+}
 
+.skills__chart__skillset__items {
+    display: flex;
+    flex-direction: column;
+
+}
+.skills__chart__skillset__item {
+    margin-bottom: 1.5rem;
+}
+.skills__chart__skillset__item__container {
+    display: flex;
+    justify-content: space-between;
+}
+.skills__chart__skillset__item__name,
+.skills__chart__skillset__item__percent {
+    font-size: calc(var(--font-size-tiny)*0.8);
+}
+
+.skills__chart__skillset__item__graph {
+    width: 100%;
+    height: .1rem;
+    background-color: var(--color-grey);
+}
+.skills__chart__skillset__item__value {
+    transform: translateY(-.1rem);
+    background-color: var(--color-dark-yellow);
+    height: .1rem;
+}
+
+.skills__chart__right-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+}
+.skills__chart__tools {
+    background-color: var(--color-grey);
+}
+.skills__chart__etc {
+    background-color: var(--color-light-grey);
+}
+
+/* Work */
 
 
 
