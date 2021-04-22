@@ -49,6 +49,8 @@ a {
 }
 button {
     outline: none;
+    background: transparent;
+    border: none;
 }
 #about,
 #skills,
@@ -62,6 +64,9 @@ button {
 .section-width {
     max-width: 1200px;
     margin: auto;
+}
+.active {
+    visibility: visible;
 }
 
 /* Typography */
@@ -307,9 +312,99 @@ p {
 
 /* Work */
 
+.work__btn {
+    border: 1px solid var(--color-light-grey);
+    padding: .5rem 1.5rem;
+    font-weight: var(--weight--regular);
+    border-radius: var(--button-radius);
+}
+.work__count {
+    display: inline-block;
+    width: 1rem;
+    background-color: var(--color-dark-yellow);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1rem;
+    color: var(--color-white);
+    margin-left: var(--space-text);
+    transform: translateY(-0.5rem);
+    visibility: hidden;
+}
+.active {
+    visibility: visible;
+}
+.work__btn:hover {
+    background-color: var(--color-dark-blue);
+    transition: all var(--speed-transition) linear;
+}
+.work__btn:hover span {
+    transform: translateY(0);
+    transition: all var(--speed-transition) linear;
+    visibility: visible;
+}
+.work__description {
+    margin: 1rem 0;
+}
+.work__items {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--space-side);
+    justify-content: center;
+    align-items: center;
+
+}
+.work__item {
+    
+    
+    position: relative;
+    cursor: pointer;
+    background-color: var(--color-light-white);
+    width: 18rem;
+    height: 16rem;
+    border: .15rem solid var(--color-white);
+}
+
+.work__item__img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.work__item__onmouse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18rem;
+    height: 16rem;
+    background-color: var(--color-black);
+    opacity: 0;
+    transform: translateY(0.5rem);
+}
+.work__item__onmouse:hover {
+    opacity: 0.8;
+    transition: all var(--speed-transition) ease-in;
+    transform: translateY(0);
+}
+.work__item__onmouse:after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background-color: var(--color-light-white);
+    position: relative;
+    left: 50%;
+    top: -1.75rem;
+    transform: translateX(-50%);
+    
+}
+.work__item__onmouse__title,
+.work__item__onmouse__description {
+    color: var(--color-light-white);
+}
+
+/* Testimonials */
 
 
-.work__item__img,
 .testimonials__item__img {
     width: 30px;
 }
