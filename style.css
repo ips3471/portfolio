@@ -403,9 +403,46 @@ p {
 }
 
 /* Testimonials */
-
-
+#testimonials {
+    background-color: var(--color-light-white);
+}
+.testimonials__description {
+    margin-bottom: 1rem
+}
 .testimonials__item__img {
     width: 30px;
 }
+.testimonials__items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.testimonials__item {
+    display: flex;
+    margin-bottom: var(--space-text);
+}
+.testimonials__item__img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+}
+.testimonials__item__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+    background-color: var(--color-white);
+}
+.testimonials__item__description__text {
+    color: var(--color-light-grey);
+}
+.testimonials__item__description__author {
+    color: var(--color-dark-blue);
+    font-weight: var(--weight--light);
+}
+.testimonials__item__description__company {
+    color: var(--color-dark-grey);
+    font-weight: var(--weight--regular);
+}
 
+/* Contact */
