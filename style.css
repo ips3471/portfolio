@@ -493,7 +493,7 @@ p {
     .navbar__toggle-btn {
         display: block;
     }
-}
+
 
 .about__cards {
     flex-direction: column;
@@ -519,4 +519,6 @@ p {
 .testimonials__item__img {
     width: 4rem;
     height: 4rem;
+}
+
 }
