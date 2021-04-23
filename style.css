@@ -446,3 +446,20 @@ p {
 }
 
 /* Contact */
+#contact {
+    background-color: var(--color-dark-blue);
+    color: var(--color-white-blue);
+}
+.contact__title,
+.contact__email,
+.contact__sns a {
+    color: var(--color-white-blue);
+}
+
+.contact__sns i:hover {
+    
+    transform: scale(1.1) rotate(5deg);
+    transition: transform var(--speed-transition) ease-in;
+}
+
+/* Media queries */
