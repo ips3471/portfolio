@@ -260,8 +260,8 @@ p {
     padding-top: var(--space-column);
 }
 .skills__paragraph {
-    padding: 0 calc(var(--space-side)*2.5);
-    padding-bottom: var(--space-column);
+    padding: 0 calc(var(--space-side)*2.5) var(--space-column) calc(var(--space-side)*2.5); 
+
 }
 .skills__chart__skillset,
 .skills__chart__tools,
@@ -493,4 +493,30 @@ p {
     .navbar__toggle-btn {
         display: block;
     }
+}
+
+.about__cards {
+    flex-direction: column;
+    align-items: center;
+}
+.about__description {
+    padding: 0;
+}
+
+.skills__chart {
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0;
+}
+.skills__paragraph {
+    padding: 0 0 var(--space-column) 0; 
+}
+
+.work__btn {
+    padding: .4rem 1rem;
+}
+
+.testimonials__item__img {
+    width: 4rem;
+    height: 4rem;
 }
