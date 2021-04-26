@@ -8,17 +8,58 @@ const testimonials = document.querySelector('#testimonials');
 const contact = document.querySelector('#contact');
 const contactBtn = document.querySelector('.button__contactme');
 const navbar__menu = document.querySelector('.navbar__menu');
-
+const upArrowBtn = document.querySelector('.button__arrow-up');
 const mainNavLinks = document.querySelectorAll('.navbar__menu li');
 const mainSections = document.querySelectorAll('section');
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+const projectBtns = document.querySelector('.work__btns');
+const projectBtn = document.querySelectorAll('.work__btn');
+const workCount = document.querySelectorAll('.work__count');
 // Global
 
 
+
 function toSection(event) {
-    let target = event.target.dataset.link;
-    let toTarget = document.querySelector(target);
-    target && toTarget.scrollIntoView({behavior : 'smooth'});
+    const target = event.target.dataset.link;
+    const scrollTo = document.querySelector(target);
+    scrollTo && scrollTo.scrollIntoView({behavior : 'smooth'});
 }
+
+
+
+function projectFilter(target) {
+    const projects = Array.from(document.querySelectorAll('.work__item'));
+    const project = projects.filter(item => item.dataset.type === target );
+    projects.forEach(item => item.classList.remove('project__visible')); //reset
+
+    if ( target === 'all' ) {
+        projects.forEach(item => item.classList.add('project__visible'));
+    } else {
+        project.forEach(item => item.classList.add('project__visible'));
+    }
+
+}
+
+function projectSelector(event) {
+    projectBtn.forEach(item => item.classList.remove('btn__selected')); //reset
+    workCount.forEach(item => item.classList.remove('active'));
+    
+    event.target.classList.add('btn__selected');
+}
+
+projectBtns.addEventListener('click', event => {
+    let target = event.target.dataset.id; //all, front-end, back-end, mobile
+    target && projectSelector(event);
+    target && projectFilter(target);
+})
+
+upArrowBtn.addEventListener('click', event => {
+    toSection(event);
+})
+
+navbarToggleBtn.addEventListener('click', () => {
+    navbar__menu.classList.toggle('visible');
+})
 
 
 function navbarEffect() {
@@ -29,13 +70,22 @@ function navbarEffect() {
     } else {
         navbar.classList.remove('navbar-color');
     }
-    const navOpacity = 1 / window.scrollY * homeBottom;
+    const navOpacity = homeBottom / window.scrollY;
     home.style.opacity = `${navOpacity}`;
 }
 
-window.addEventListener('scroll', () => {
+function displayArrowBtn() {
+    if ( window.scrollY > skills.getBoundingClientRect().top) {
+        upArrowBtn.classList.remove('hide');
+    } else {
+        upArrowBtn.classList.add('hide');
+    }
+}
+
+window.addEventListener('scroll', event => {
     navbarEffect();
     navbarMenuMove();
+    displayArrowBtn();
 })
 
 navbar.addEventListener('click', (event) => {
@@ -76,16 +126,15 @@ function navbarMenuMove() {
         mainNavLinks[3].style.border = '1px solid var(--color-white)';
 
     }
-    else if( testimonialsRect.top < window.scrollY <= contactRect.bottom - testimonialsRect.height ) {
+    else if( testimonialsRect.top < window.scrollY <= testimonialsRect.bottom ) {
         mainNavLinks[3].style.border = 'none';
         mainNavLinks[5].style.border = 'none';
         mainNavLinks[4].style.border = '1px solid var(--color-white)';
 
     }
-    else if( contactRect.bottom - testimonialsRect.height < window.scrollY ) {
+    else {
         mainNavLinks[4].style.border = 'none';
         mainNavLinks[5].style.border = '1px solid var(--color-white)';
-
     }
 }
 

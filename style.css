@@ -100,21 +100,20 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: transparent;
+    /* background-color: transparent; */
     position: fixed;
     width: 100%;
     top: 0;
-    margin: var(--space-side) var(--space-side) 0 var(--space-side);
     padding: 0 calc(var(--space-side)*2);
-    flex-direction: row;
+    /* flex-direction: row; */
     margin: 0;
     transition: all 300ms linear;
-    background-color: transparent;
     z-index: 10;
 }
 #navbar.navbar-color {
     background-color: var(--color-white-blue);
 }
+
 
 .navbar__logo {
     display: flex;
@@ -152,12 +151,15 @@ p {
     right: 1.2rem;
     top: 1.2rem;
     display: none;
+    cursor: pointer;
 }
 .navbar__toggle-btn i {
     color: var(--color-white);
     font-size: 1.2rem;
 
 }
+
+
 /* Home */
 #home {
     background: url(/imgs/home-background.png) center/cover;
@@ -331,12 +333,12 @@ p {
 }
 
 /* Work */
-
 .work__btn {
     border: 1px solid var(--color-light-grey);
     padding: .5rem 1.5rem;
     font-weight: var(--weight--regular);
     border-radius: var(--button-radius);
+    cursor: pointer;
 }
 .work__count {
     display: inline-block;
@@ -350,11 +352,18 @@ p {
     transform: translateY(-0.5rem);
     visibility: hidden;
 }
+.btn__selected {
+    background-color: var(--color-dark-blue);
+}
+.count__selected {
+    visibility: visible;
+}
+
 .active {
     visibility: visible;
 }
 .work__btn:hover {
-    background-color: var(--color-dark-blue);
+    border: 1px solid var(--color-dark-blue);
     transition: all var(--speed-transition) linear;
 }
 .work__btn:hover span {
@@ -375,14 +384,13 @@ p {
 
 }
 .work__item {
-    
-    
     position: relative;
     cursor: pointer;
     background-color: var(--color-light-white);
     width: 18rem;
     height: 16rem;
     border: .15rem solid var(--color-white);
+    display: none;
 }
 
 .work__item__img {
@@ -422,10 +430,13 @@ p {
 .work__item__onmouse__description {
     color: var(--color-light-white);
 }
+.project__visible {
+    display: block;
+}
 
 /* Testimonials */
 #testimonials {
-    padding: 10rem 0;
+    padding: 4rem 0;
     background-color: var(--color-light-white);
 }
 .testimonials__description {
@@ -484,12 +495,43 @@ p {
     transition: transform var(--speed-transition) ease-in;
 }
 
+.button__arrow-up {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: block;
+    color: var(--color-white);
+    background-color: var(--color-dark-blue);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 100%;
+    box-shadow: 3px 5px 16px -4px #000000;
+    transition: all var(--speed-transition) linear;
+}
+
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+.button__arrow-up:hover {
+    transform: scale(1.1);
+
+    transition: transform --speed-transition ease-in;
+}
+
+
 /* Media queries */
 @media screen and (max-width:678px) {
     #navbar {
         flex-direction: column;
         align-items: flex-start;
         padding-top: var(--space-text);
+        padding-bottom: 10px;
     }
     .navbar__logo {
         
@@ -503,6 +545,11 @@ p {
     .navbar__toggle-btn {
         display: block;
     }
+    .visible {
+        display: block;
+        opacity: 1;
+    }
+    
 
 
 .about__cards {
@@ -530,5 +577,6 @@ p {
     width: 4rem;
     height: 4rem;
 }
+
 
 }

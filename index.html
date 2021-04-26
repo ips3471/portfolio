@@ -168,15 +168,23 @@
             <h1 class="work__title">My work</h1>
             <h3 class="work__description">Projects</h3>
             <div class="work__btns">
-                <button class="work__btn">All<span class="work__count active">8</span></button>
-                <button class="work__btn">Front-end<span class="work__count">4</span></button>
-                <button class="work__btn">Back-end<span class="work__count">2</span></button>
-                <button class="work__btn">Mobile<span class="work__count">2</span></button>
+                <button class="work__btn btn__selected" data-id="all">All
+                    <span class="work__count active">8</span>
+                </button>
+                <button class="work__btn" data-id="front-end">Front-end
+                    <span class="work__count">4</span>
+                </button>
+                <button class="work__btn" data-id="back-end">Back-end
+                    <span class="work__count">2</span>
+                </button>
+                <button class="work__btn" data-id="mobile">Mobile
+                    <span class="work__count">2</span>
+                </button>
             </div>
             <div class="work__items section-width">
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="front-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -188,9 +196,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="front-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -202,9 +210,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="front-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -216,9 +224,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="front-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -230,9 +238,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="back-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -244,9 +252,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="back-end">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -258,9 +266,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="mobile">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -272,9 +280,9 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item">
+                <div class="work__item project__visible" data-type="mobile">
                     <a
-                    data-type="mobile" 
+                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -338,5 +346,8 @@
             </h2>
             <span class="contact__copyright">2021 Dream Coding - All rights reserved</span>
         </section>
+            <button class="button__arrow-up" data-link="#home">
+                <i class="fas fa-arrow-up" data-link="#home"></i>
+        </div>
     </body>
 </html>
