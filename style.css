@@ -363,7 +363,8 @@ p {
     visibility: visible;
 }
 .work__btn:hover {
-    border: 1px solid var(--color-dark-blue);
+    background-color: var(--color-dark-blue);
+    border: 1px solid var(--color-white);
     transition: all var(--speed-transition) linear;
 }
 .work__btn:hover span {
@@ -390,7 +391,6 @@ p {
     width: 18rem;
     height: 16rem;
     border: .15rem solid var(--color-white);
-    display: none;
 }
 
 .work__item__img {
@@ -430,8 +430,8 @@ p {
 .work__item__onmouse__description {
     color: var(--color-light-white);
 }
-.project__visible {
-    display: block;
+.work__item.hidden {
+    display: none;
 }
 
 /* Testimonials */

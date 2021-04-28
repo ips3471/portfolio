@@ -12,11 +12,27 @@ const upArrowBtn = document.querySelector('.button__arrow-up');
 const mainNavLinks = document.querySelectorAll('.navbar__menu li');
 const mainSections = document.querySelectorAll('section');
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+
+
+// Work
 const projectBtns = document.querySelector('.work__btns');
 const projectBtn = document.querySelectorAll('.work__btn');
 const workCount = document.querySelectorAll('.work__count');
-// Global
-
+const projects = document.querySelectorAll('.work__item');
+projectBtns.addEventListener('click', (e) => {
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if ( filter === null) {
+        return;
+    }
+    console.log(filter);
+    projects.forEach((project) => {
+        if ( filter === 'all' || filter === project.dataset.type) {
+            project.classList.remove('hidden');
+        } else {
+            project.classList.add('hidden');
+        }
+    })
+})
 
 
 function toSection(event) {
@@ -24,34 +40,6 @@ function toSection(event) {
     const scrollTo = document.querySelector(target);
     scrollTo && scrollTo.scrollIntoView({behavior : 'smooth'});
 }
-
-
-
-function projectFilter(target) {
-    const projects = Array.from(document.querySelectorAll('.work__item'));
-    const project = projects.filter(item => item.dataset.type === target );
-    projects.forEach(item => item.classList.remove('project__visible')); //reset
-
-    if ( target === 'all' ) {
-        projects.forEach(item => item.classList.add('project__visible'));
-    } else {
-        project.forEach(item => item.classList.add('project__visible'));
-    }
-
-}
-
-function projectSelector(event) {
-    projectBtn.forEach(item => item.classList.remove('btn__selected')); //reset
-    workCount.forEach(item => item.classList.remove('active'));
-    
-    event.target.classList.add('btn__selected');
-}
-
-projectBtns.addEventListener('click', event => {
-    let target = event.target.dataset.id; //all, front-end, back-end, mobile
-    target && projectSelector(event);
-    target && projectFilter(target);
-})
 
 upArrowBtn.addEventListener('click', event => {
     toSection(event);
