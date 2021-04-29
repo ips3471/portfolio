@@ -7,31 +7,55 @@ const work = document.querySelector('#work');
 const testimonials = document.querySelector('#testimonials');
 const contact = document.querySelector('#contact');
 const contactBtn = document.querySelector('.button__contactme');
-const navbar__menu = document.querySelector('.navbar__menu');
 const upArrowBtn = document.querySelector('.button__arrow-up');
 const mainNavLinks = document.querySelectorAll('.navbar__menu li');
 const mainSections = document.querySelectorAll('section');
-const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 
+// Navbar
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+const navbar__menu = document.querySelector('.navbar__menu');
+navbarToggleBtn.addEventListener('click', () => {
+    navbar__menu.classList.toggle('visible');
+})
+function navbarEffect() {
+    const homeBottom = home.getBoundingClientRect().bottom;
+    const navbarHeight = navbar.getBoundingClientRect().height;
+    navbar__menu.classList.remove('visible');
+    if ( window.scrollY > navbarHeight ) {
+        navbar.classList.add('navbar-color');
+    } else {
+        navbar.classList.remove('navbar-color');
+    }
+    const navOpacity = homeBottom / window.scrollY;
+    home.style.opacity = `${navOpacity}`;
+}
 
 // Work
 const projectBtns = document.querySelector('.work__btns');
 const projectBtn = document.querySelectorAll('.work__btn');
 const workCount = document.querySelectorAll('.work__count');
 const projects = document.querySelectorAll('.work__item');
+const projectContainer = document.querySelector('.work__items');
 projectBtns.addEventListener('click', (e) => {
-    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-    if ( filter === null) {
-        return;
-    }
-    console.log(filter);
-    projects.forEach((project) => {
-        if ( filter === 'all' || filter === project.dataset.type) {
-            project.classList.remove('hidden');
-        } else {
-            project.classList.add('hidden');
+    const active = document.querySelector('.work__btn.active');
+    active.classList.remove('active');
+    e.target.nodeName === 'BUTTON' ? e.target.classList.add('active') 
+                                    : e.target.parentNode.classList.add('active');
+    projectContainer.classList.add('invisible');
+    setTimeout(() => {
+        const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+        if ( filter === null) {
+            return;
         }
-    })
+        projects.forEach((project) => {
+            if ( filter === 'all' || filter === project.dataset.type) {
+                project.classList.remove('hidden');
+            } else {
+                project.classList.add('hidden');
+            }
+        })
+        projectContainer.classList.remove('invisible');
+    },150);
 })
 
 
@@ -45,22 +69,9 @@ upArrowBtn.addEventListener('click', event => {
     toSection(event);
 })
 
-navbarToggleBtn.addEventListener('click', () => {
-    navbar__menu.classList.toggle('visible');
-})
 
 
-function navbarEffect() {
-    let homeBottom = home.getBoundingClientRect().bottom;
-    let navbarHeight = navbar.getBoundingClientRect().height;
-    if ( window.scrollY > navbarHeight ) {
-        navbar.classList.add('navbar-color');
-    } else {
-        navbar.classList.remove('navbar-color');
-    }
-    const navOpacity = homeBottom / window.scrollY;
-    home.style.opacity = `${navOpacity}`;
-}
+
 
 function displayArrowBtn() {
     if ( window.scrollY > skills.getBoundingClientRect().top) {

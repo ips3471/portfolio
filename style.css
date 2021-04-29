@@ -65,9 +65,7 @@ button {
     max-width: 1200px;
     margin: auto;
 }
-.active {
-    visibility: visible;
-}
+
 
 /* Typography */
 h1 {
@@ -340,6 +338,14 @@ p {
     border-radius: var(--button-radius);
     cursor: pointer;
 }
+.work__btn.active {
+    background-color: var(--color-dark-blue);
+}
+.work__btn.active > span {
+    visibility: visible;
+    transform: translateY(0);
+
+}
 .work__count {
     display: inline-block;
     width: 1rem;
@@ -352,16 +358,8 @@ p {
     transform: translateY(-0.5rem);
     visibility: hidden;
 }
-.btn__selected {
-    background-color: var(--color-dark-blue);
-}
-.count__selected {
-    visibility: visible;
-}
 
-.active {
-    visibility: visible;
-}
+
 .work__btn:hover {
     background-color: var(--color-dark-blue);
     border: 1px solid var(--color-white);
@@ -381,8 +379,12 @@ p {
     padding: var(--space-side);
     justify-content: center;
     align-items: center;
-    z-index: 1;
-
+    opacity: 1;
+}
+.work__items.invisible {
+    opacity: 0;
+    transition: all 100ms ease-out;
+    transform: translateY(.5rem);
 }
 .work__item {
     position: relative;
@@ -391,6 +393,7 @@ p {
     width: 18rem;
     height: 16rem;
     border: .15rem solid var(--color-white);
+    transition: all --speed-transition ease-in;
 }
 
 .work__item__img {
@@ -415,11 +418,15 @@ p {
     transition: all var(--speed-transition) ease-in;
     transform: translateY(0);
 }
+.work__item__onmouse:hover:after {
+    width: 10rem;
+    transition: all var(--speed-transition) ease-out;
+}
 .work__item__onmouse:after {
     content: '';
-    width: 20px;
+    width: 0rem;
     height: 1px;
-    background-color: var(--color-light-white);
+    background-color: var(--color-dark-yellow);
     position: relative;
     left: 50%;
     top: -1.75rem;
@@ -532,10 +539,9 @@ p {
         align-items: flex-start;
         padding-top: var(--space-text);
         padding-bottom: 10px;
+        background-color: var(--color-white-blue);
     }
-    .navbar__logo {
-        
-    }
+
     .navbar__menu {
         flex-direction: column;
         text-align: center;
@@ -545,10 +551,10 @@ p {
     .navbar__toggle-btn {
         display: block;
     }
-    .visible {
+    .navbar__menu.visible {
         display: block;
-        opacity: 1;
     }
+
     
 
 
