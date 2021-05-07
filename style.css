@@ -332,8 +332,9 @@ p {
 
 /* Work */
 .work__btn {
+    position: relative;
     border: 1px solid var(--color-light-grey);
-    padding: .5rem 1.5rem;
+    padding: .5rem 2rem;
     font-weight: var(--weight--regular);
     border-radius: var(--button-radius);
     cursor: pointer;
@@ -347,6 +348,8 @@ p {
 
 }
 .work__count {
+    position: absolute;
+    right: .6rem;
     display: inline-block;
     width: 1rem;
     background-color: var(--color-dark-yellow);
@@ -548,6 +551,9 @@ p {
         width: 100%;
         display: none;
     }
+    .navbar__menu.active {
+        border: 1px solid var(--color-light-white);
+    }
     .navbar__toggle-btn {
         display: block;
     }
@@ -579,10 +585,17 @@ p {
     padding: .4rem 1rem;
 }
 
+/* Testimonials */
+.testimonials__item {
+    flex-direction: column;
+    align-items: center;
+}
 .testimonials__item__img {
     width: 4rem;
     height: 4rem;
 }
-
+.testimonials__item__description {
+    order: 1;
+}
 
 }

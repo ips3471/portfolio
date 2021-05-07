@@ -81,9 +81,8 @@ function displayArrowBtn() {
     }
 }
 
-window.addEventListener('scroll', event => {
+window.addEventListener('scroll', () => {
     navbarEffect();
-    navbarMenuMove();
     displayArrowBtn();
 })
 
@@ -97,43 +96,46 @@ contactBtn.addEventListener('click', (event) => {
 
 
 
-function navbarMenuMove() {
-    const homeRect = home.getBoundingClientRect();
-    const aboutRect = about.getBoundingClientRect();
-    const skillsRect = skills.getBoundingClientRect();
-    const workRect = work.getBoundingClientRect();
-    const testimonialsRect = testimonials.getBoundingClientRect();
-    const contactRect = contact.getBoundingClientRect();
 
-    if( homeRect.top < window.scrollY <= homeRect.bottom ) {
-        mainNavLinks[1].style.border = 'none';
-        mainNavLinks[0].style.border = '1px solid var(--color-white)';
-    } 
-    else if( aboutRect.top < window.scrollY <= aboutRect.bottom ) {
-        mainNavLinks[0].style.border = 'none';
-        mainNavLinks[2].style.border = 'none';
-        mainNavLinks[1].style.border = '1px solid var(--color-white)';
-    }
-    else if( skillsRect.top < window.scrollY <= skillsRect.bottom ) {
-        mainNavLinks[1].style.border = 'none';
-        mainNavLinks[3].style.border = 'none';
-        mainNavLinks[2].style.border = '1px solid var(--color-white)';
-    }
-    else if( workRect.top < window.scrollY <= workRect.bottom ) {
-        mainNavLinks[2].style.border = 'none';
-        mainNavLinks[4].style.border = 'none';
-        mainNavLinks[3].style.border = '1px solid var(--color-white)';
 
-    }
-    else if( testimonialsRect.top < window.scrollY <= testimonialsRect.bottom ) {
-        mainNavLinks[3].style.border = 'none';
-        mainNavLinks[5].style.border = 'none';
-        mainNavLinks[4].style.border = '1px solid var(--color-white)';
 
-    }
-    else {
-        mainNavLinks[4].style.border = 'none';
-        mainNavLinks[5].style.border = '1px solid var(--color-white)';
-    }
+const sectionIds = [
+    '#home',
+    '#about',
+    '#skills',
+    '#work',
+    '#testimonials',
+    '#contact',
+];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
+let selectedNavItem = navItems[0];
+
+
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.4,
 }
+
+const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+            const index = sectionIds.indexOf(`#${entry.target.id}`);
+            let selectedIndex;
+            if (entry.boundingClientRect.y < 0) {
+                selectedIndex = index + 1;
+            } else {
+                selectedIndex = index - 1;
+            }
+            selectedNavItem.classList.remove('active');
+            selectedNavItem = navItems[selectedIndex];
+            selectedNavItem.classList.add('active');
+        }
+
+    })
+}
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+sections.forEach((section) => observer.observe(section));
 
