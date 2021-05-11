@@ -160,7 +160,7 @@ p {
 
 /* Home */
 #home {
-    background: url(/imgs/home-background.png) center/cover;
+    background: url(./imgs/home-background.png) center/cover;
     text-align: center;
     padding: calc(var(--space-column)*3) 0 var(--space-column) 0;
     
