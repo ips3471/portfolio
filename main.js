@@ -20,7 +20,7 @@ navbarToggleBtn.addEventListener('click', () => {
 function navbarEffect() {
     const homeBottom = home.getBoundingClientRect().bottom;
     const navbarHeight = navbar.getBoundingClientRect().height;
-    navbar__menu.classList.remove('visible');
+    // navbar__menu.classList.remove('visible');
     if ( window.scrollY > navbarHeight ) {
         navbar.classList.add('navbar-color');
     } else {
@@ -59,14 +59,17 @@ projectBtns.addEventListener('click', (e) => {
 })
 
 
-function toSection(event) {
-    const target = event.target.dataset.link;
+function toSection(target) {
     const scrollTo = document.querySelector(target);
+    const prevNavItem = document.querySelector('.navbar__menu__item.active');
+    const clickedNavItem = document.querySelector(`[data-link='${target}']`);
+    prevNavItem && prevNavItem.classList.remove('active');
+    clickedNavItem && clickedNavItem.classList.add('active');
     scrollTo && scrollTo.scrollIntoView({behavior : 'smooth'});
 }
 
 upArrowBtn.addEventListener('click', event => {
-    toSection(event);
+    toSection('#home');
 })
 
 
@@ -81,13 +84,24 @@ function displayArrowBtn() {
     }
 }
 
+window.addEventListener('wheel', () => {
+    if ( window.scrollY === 0) {
+        selectedNavIndex = 0;
+    }
+    else if ( Math.ceil(window.scrollY + window.innerHeight) === document.body.clientHeight) {
+        selectedNavIndex = navItems.length - 1;
+    }
+    selectNavMenu(navItems[selectedNavIndex]);
+})
+
 window.addEventListener('scroll', () => {
     navbarEffect();
     displayArrowBtn();
 })
 
 navbar.addEventListener('click', (event) => {
-    toSection(event);
+    let target = event.target.dataset.link; //#home ~ #contact
+    toSection(target);
 })
 
 contactBtn.addEventListener('click', (event) => {
@@ -110,6 +124,7 @@ const sectionIds = [
 const sections = sectionIds.map(id => document.querySelector(id));
 const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
 let selectedNavItem = navItems[0];
+let selectedNavIndex;
 
 
 const observerOptions = {
@@ -118,19 +133,21 @@ const observerOptions = {
     threshold: 0.4,
 }
 
+function selectNavMenu(selected) {
+    selectedNavItem && selectedNavItem.classList.remove('active');
+    selectedNavItem = selected;
+    selectedNavItem && selectedNavItem.classList.add('active');
+}
+
 const observerCallback = (entries, observer) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
-            let selectedIndex;
             if (entry.boundingClientRect.y < 0) {
-                selectedIndex = index + 1;
+                selectedNavIndex = index + 1;
             } else {
-                selectedIndex = index - 1;
+                selectedNavIndex = index - 1;
             }
-            selectedNavItem.classList.remove('active');
-            selectedNavItem = navItems[selectedIndex];
-            selectedNavItem.classList.add('active');
         }
 
     })
