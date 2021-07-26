@@ -104,7 +104,7 @@ p {
     padding: 0 calc(var(--space-side));
     margin: 0;
     transition: all 300ms linear;
-    z-index: 10;
+    z-index: 1;
 }
 #navbar.navbar-color {
     background-color: var(--color-white-blue);
@@ -133,6 +133,7 @@ p {
     border-radius: var(--button-radius);
     cursor: pointer;
     color: var(--color-white);
+    z-index: 2;
 }
 .navbar__menu__item.active {
     border: 1px solid var(--color-white);
@@ -570,6 +571,7 @@ p {
     --space-column: 2rem;
     --button-radius: 4px;
     --item-card: 8rem;
+    --section-padding-top: 2rem;
     
         /* Animation */
     --speed-transition: 300ms;
@@ -598,8 +600,12 @@ p {
         display: block;
     }
 
+
     
 /* About */
+.about__title {
+    padding-top: var(--section-padding-top);
+}
 .about__cards {
     flex-direction: column;
     align-items: center;
@@ -613,6 +619,9 @@ p {
 }
 
 /* Skills */
+.skills__title {
+    padding-top: var(--section-padding-top);
+}
 .skills__chart {
     flex-direction: column;
     flex-grow: 1;
@@ -627,6 +636,9 @@ p {
 }
 
 /* My work */
+.work__title {
+    padding-top: var(--section-padding-top);
+}
 .work__btn {
     display: inline-block;
     min-width: 7rem;
@@ -635,6 +647,9 @@ p {
 }
 
 /* Testimonials */
+.testimonials__title {
+    padding-top: var(--section-padding-top);
+}
 .testimonials__item {
     flex-direction: column;
     align-items: center;

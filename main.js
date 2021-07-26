@@ -20,14 +20,13 @@ navbarToggleBtn.addEventListener('click', () => {
 function navbarEffect() {
     const homeBottom = home.getBoundingClientRect().bottom;
     const navbarHeight = navbar.getBoundingClientRect().height;
-    // navbar__menu.classList.remove('visible');
-    if ( window.scrollY > navbarHeight ) {
+    if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar-color');
     } else {
         navbar.classList.remove('navbar-color');
     }
     const navOpacity = homeBottom / window.scrollY;
-    home.style.opacity = `${navOpacity}`;
+    home.style.opacity = navOpacity;
 }
 
 // Work
@@ -37,25 +36,28 @@ const workCount = document.querySelectorAll('.work__count');
 const projects = document.querySelectorAll('.work__item');
 const projectContainer = document.querySelector('.work__items');
 projectBtns.addEventListener('click', (e) => {
+    if (!e.target.dataset.filter) {
+        return;
+    }
     const active = document.querySelector('.work__btn.active');
-    active.classList.remove('active');
-    e.target.nodeName === 'BUTTON' ? e.target.classList.add('active') 
-                                    : e.target.parentNode.classList.add('active');
+    active && active.classList.remove('active');
+    e.target.nodeName === 'BUTTON' ? e.target.classList.add('active')
+        : e.target.parentNode.classList.add('active');
     projectContainer.classList.add('invisible');
     setTimeout(() => {
         const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-        if ( filter === null) {
+        if (filter === null) {
             return;
         }
         projects.forEach((project) => {
-            if ( filter === 'all' || filter === project.dataset.type) {
+            if (filter === 'all' || filter === project.dataset.type) {
                 project.classList.remove('hidden');
             } else {
                 project.classList.add('hidden');
             }
         })
         projectContainer.classList.remove('invisible');
-    },150);
+    }, 150);
 })
 
 
@@ -65,7 +67,7 @@ function toSection(target) {
     const clickedNavItem = document.querySelector(`[data-link='${target}']`);
     prevNavItem && prevNavItem.classList.remove('active');
     clickedNavItem && clickedNavItem.classList.add('active');
-    scrollTo && scrollTo.scrollIntoView({behavior : 'smooth'});
+    scrollTo && scrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 upArrowBtn.addEventListener('click', event => {
@@ -77,7 +79,7 @@ upArrowBtn.addEventListener('click', event => {
 
 
 function displayArrowBtn() {
-    if ( window.scrollY > skills.getBoundingClientRect().top) {
+    if (window.scrollY > skills.getBoundingClientRect().top) {
         upArrowBtn.classList.remove('hide');
     } else {
         upArrowBtn.classList.add('hide');
@@ -85,13 +87,15 @@ function displayArrowBtn() {
 }
 
 window.addEventListener('wheel', () => {
-    if ( window.scrollY === 0) {
+    const navbar__menu__open = navbar__menu.classList.contains('visible');
+    if (window.scrollY === 0) {
         selectedNavIndex = 0;
     }
-    else if ( Math.ceil(window.scrollY + window.innerHeight) === document.body.clientHeight) {
+    else if (Math.ceil(window.scrollY + window.innerHeight) === document.body.clientHeight) {
         selectedNavIndex = navItems.length - 1;
     }
     selectNavMenu(navItems[selectedNavIndex]);
+    navbar__menu__open && navbar__menu.classList.remove('visible');
 })
 
 window.addEventListener('scroll', () => {
@@ -101,6 +105,7 @@ window.addEventListener('scroll', () => {
 
 navbar.addEventListener('click', (event) => {
     let target = event.target.dataset.link; //#home ~ #contact
+    target && navbar__menu.classList.toggle('visible');
     toSection(target);
 })
 
