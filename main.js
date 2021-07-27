@@ -87,7 +87,6 @@ function displayArrowBtn() {
 }
 
 window.addEventListener('wheel', () => {
-    const navbar__menu__open = navbar__menu.classList.contains('visible');
     if (window.scrollY === 0) {
         selectedNavIndex = 0;
     }
@@ -95,10 +94,11 @@ window.addEventListener('wheel', () => {
         selectedNavIndex = navItems.length - 1;
     }
     selectNavMenu(navItems[selectedNavIndex]);
-    navbar__menu__open && navbar__menu.classList.remove('visible');
 })
 
 window.addEventListener('scroll', () => {
+    const navbar__menu__open = navbar__menu.classList.contains('visible');
+    navbar__menu__open && navbar__menu.classList.remove('visible');
     navbarEffect();
     displayArrowBtn();
 })
