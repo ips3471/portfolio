@@ -453,7 +453,7 @@ p {
 
 /* Testimonials */
 #testimonials {
-    padding:  0;
+    padding: calc(var(--space-side)*1);
     background-color: var(--color-light-white);
 }
 .testimonials__title {
