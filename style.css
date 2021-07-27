@@ -109,8 +109,6 @@ p {
 #navbar.navbar-color {
     background-color: var(--color-white-blue);
 }
-
-
 .navbar__logo {
     display: flex;
     align-items: center;
@@ -186,17 +184,20 @@ p {
     transition: background-color var(--speed-transition) linear;
 }
 
-/* About */
 
+/* About */
 .about__cards,
 .about__title,
 .about__description {
     padding: 0 calc(var(--space-side)*2.5);
 }
+.about__title {
+    padding-top: var(--section-padding-top);
+}
 .about__cards {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 4rem;
+    padding: 2rem 6rem;
 }
 .about__card {
     display: flex;
@@ -264,7 +265,7 @@ p {
     background-color: var(--color-yellow);
 }
 .skills__title {
-    padding-top: var(--space-column);
+    padding-top: var(--section-padding-top);
 }
 .skills__paragraph {
     padding: 0 calc(var(--space-side)*2.5) var(--space-column) calc(var(--space-side)*2.5); 
@@ -330,6 +331,9 @@ p {
 }
 
 /* Work */
+.work__title {
+    padding-top: var(--section-padding-top);
+}
 .work__btns {
     margin-bottom: var(--space-side);
 }
@@ -449,8 +453,11 @@ p {
 
 /* Testimonials */
 #testimonials {
-    padding: 4rem 0;
+    padding:  0;
     background-color: var(--color-light-white);
+}
+.testimonials__title {
+    padding-top: 2rem;
 }
 .testimonials__description {
     margin-bottom: 1rem;
@@ -503,7 +510,6 @@ p {
     color: var(--color-white-blue);
     font-size: var(--font-size-small);
 }
-
 .contact__sns i:hover {
     
     transform: scale(1.1) rotate(5deg);
@@ -600,12 +606,18 @@ p {
         display: block;
     }
 
+/* Home */
+.home__title {
+    padding: 0 .5rem;
+    font-size: var(--font-size-large);
+}
+.home__description {
+    padding: 0 1rem;
+    font-size: var(--font-size-small);
 
+}
     
 /* About */
-.about__title {
-    padding-top: var(--section-padding-top);
-}
 .about__cards {
     flex-direction: column;
     align-items: center;
@@ -614,14 +626,10 @@ p {
     padding: 0;
 }
 .about__card__description {
-    /* width: 28rem; */
     padding-bottom: 1rem;
 }
 
 /* Skills */
-.skills__title {
-    padding-top: var(--section-padding-top);
-}
 .skills__chart {
     flex-direction: column;
     flex-grow: 1;
@@ -647,19 +655,29 @@ p {
 }
 
 /* Testimonials */
-.testimonials__title {
-    padding-top: var(--section-padding-top);
+#testimonials {
+    padding-bottom: var(--section-padding-top);
+}
+.testimonials__description {
+    font-size: var(--font-size-small);
 }
 .testimonials__item {
     flex-direction: column;
     align-items: center;
+    margin: 0;
+}
+.testimonials__item__description {
+    padding: .5rem 0;
 }
 .testimonials__item__img {
     width: 4rem;
     height: 4rem;
 }
 .testimonials__item__description {
+    margin: 0;
     order: 1;
+}
+.testimonials__item__description__text {
 }
 
 }
