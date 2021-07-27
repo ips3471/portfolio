@@ -28,6 +28,7 @@
 --space-column: 2rem;
 --button-radius: 4px;
 --item-card: 8rem;
+--section-padding-top: 2.5rem;
 
     /* Animation */
 --speed-transition: 300ms;
@@ -168,10 +169,10 @@ p {
 }
 #home > h1,
 #home > h2,
-#home > button {
+.button__contactme {
     color: var(--color-light-white);
 }
-#home > button {
+.button__contactme {
     background-color: transparent;
     border: 1px solid var(--color-light-white);
     padding: var(--space-text);
@@ -179,9 +180,10 @@ p {
     cursor: pointer;
     border-radius: var(--button-radius);
 }
-#home > button:hover {
+.button__contactme:hover {
     background-color: rgba(255,255,255,0.2);
     transition: background-color var(--speed-transition) linear;
+    
 }
 
 
@@ -204,15 +206,18 @@ p {
     flex-direction: column;
     align-items: center;
     width: 10rem;
-    
 }
 .about__card__logo {
     font-size: calc(var(--font-size-large)*1.5);
-    border: 1px solid var(--color-orange);
-    color: var(--color-orange);   
+    border: 1px solid var(--color-light-grey);
+    color: var(--color-light-grey);   
     border-radius: 50%;
     width: var(--item-card);
     height: var(--item-card);
+}
+.about__card__logo.active {
+    border: 1px solid var(--color-orange);
+    color: var(--color-orange);
 }
 .about__card__logo > i {
     line-height: var(--item-card);
@@ -293,6 +298,8 @@ p {
 .skills__chart__skillset__items {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
 
 }
 .skills__chart__skillset__item {
@@ -321,13 +328,15 @@ p {
 .skills__chart__right-container {
     display: flex;
     flex-direction: column;
-    flex-basis: 30%;
+    flex-basis: 40%;
 }
 .skills__chart__tools {
     background-color: var(--color-grey);
+    flex: 1 1 20%;
 }
 .skills__chart__etc {
     background-color: var(--color-light-grey);
+    flex: 1 1 30%;
 }
 
 /* Work */
@@ -511,7 +520,6 @@ p {
     font-size: var(--font-size-small);
 }
 .contact__sns i:hover {
-    
     transform: scale(1.1) rotate(5deg);
     transition: transform var(--speed-transition) ease-in;
 }
@@ -532,16 +540,13 @@ p {
     transition: all var(--speed-transition) linear;
 }
 
-
 .hide {
     opacity: 0;
     pointer-events: none;
-
 }
 
 .button__arrow-up:hover {
     transform: scale(1.1);
-
     transition: transform --speed-transition ease-in;
 }
 
@@ -577,7 +582,6 @@ p {
     --space-column: 2rem;
     --button-radius: 4px;
     --item-card: 8rem;
-    --section-padding-top: 2rem;
     
         /* Animation */
     --speed-transition: 300ms;
@@ -589,7 +593,6 @@ p {
         padding-bottom: 10px;
         background-color: var(--color-white-blue);
     }
-
     .navbar__menu {
         flex-direction: column;
         text-align: center;
@@ -614,7 +617,6 @@ p {
 .home__description {
     padding: 0 1rem;
     font-size: var(--font-size-small);
-
 }
     
 /* About */
