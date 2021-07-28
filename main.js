@@ -86,11 +86,14 @@ function displayArrowBtn() {
     }
 }
 
+
+
+
 window.addEventListener('wheel', () => {
     if (window.scrollY === 0) {
         selectedNavIndex = 0;
     }
-    else if (Math.ceil(window.scrollY + window.innerHeight) === document.body.clientHeight) {
+    else if (Math.ceil(window.scrollY + window.innerHeight) >= document.body.clientHeight) {
         selectedNavIndex = navItems.length - 1;
     }
     selectNavMenu(navItems[selectedNavIndex]);
@@ -123,29 +126,25 @@ const sectionIds = [
     '#about',
     '#skills',
     '#work',
-    '#testimonials',
+    // '#testimonials',
     '#contact',
 ];
 const sections = sectionIds.map(id => document.querySelector(id));
 const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
 let selectedNavItem = navItems[0];
 let selectedNavIndex;
-
-
 const observerOptions = {
-    root: null,
+    root: null, //viewport
     rootMargin: '0px',
     threshold: 0.4,
 }
-
 function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.remove('active');
     selectedNavItem = selected;
     selectedNavItem && selectedNavItem.classList.add('active');
 }
-
 const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
             if (entry.boundingClientRect.y < 0) {
@@ -154,10 +153,8 @@ const observerCallback = (entries, observer) => {
                 selectedNavIndex = index - 1;
             }
         }
-
     })
 }
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-sections.forEach((section) => observer.observe(section));
-
+sections.forEach(section => observer.observe(section));

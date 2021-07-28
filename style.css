@@ -14,8 +14,8 @@
 --color-yellow: #fff7d1;
 --color-dark-yellow: #feb546;
     /* Font size */
---font-size-large: 2.5rem;
---font-size-medium: 1.8rem;
+--font-size-large: 2.1rem;
+--font-size-medium: 1.6rem;
 --font-size-small: 1.5rem;
 --font-size-tiny: 1rem;
     /* Font weight */
@@ -126,6 +126,11 @@ p {
 }
 .navbar__menu {
     display: flex;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
 }
 .navbar__menu__item {
     padding: var(--space-text);
@@ -345,6 +350,11 @@ p {
 }
 .work__btns {
     margin-bottom: var(--space-side);
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
 }
 .work__btn {
     position: relative;
@@ -519,6 +529,11 @@ p {
     color: var(--color-white-blue);
     font-size: var(--font-size-small);
 }
+.contact__email.point {
+    color: var(--color-orange);
+    
+}
+
 .contact__sns i:hover {
     transform: scale(1.1) rotate(5deg);
     transition: transform var(--speed-transition) ease-in;
@@ -601,6 +616,16 @@ p {
     }
     .navbar__menu.active {
         border: 1px solid var(--color-light-white);
+    }
+    .navbar__menu__item {
+        height: 3rem;
+    }
+    .navbar__menu__item::after {
+        content:'';
+        display: inline-block;
+        width: 90%;
+        background-color: var(--color-white);
+        height: 1px;
     }
     .navbar__toggle-btn {
         display: block;
