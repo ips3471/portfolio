@@ -60,6 +60,10 @@ projectBtns.addEventListener('click', (e) => {
     }, 150);
 })
 
+function makeAlert(message) {
+    window.alert(`${message}`);
+}
+
 
 function toSection(target) {
     const scrollTo = document.querySelector(target);
@@ -143,14 +147,29 @@ function selectNavMenu(selected) {
     selectedNavItem = selected;
     selectedNavItem && selectedNavItem.classList.add('active');
 }
+const skillValues = document.querySelectorAll('.skills__chart__skillset__item__value');
+function skillsValueAnimation(boal) {
+    skillValues.forEach(value => {
+        if (boal === true) {
+            value.classList.add('active');
+            console.log('true');
+        } else {
+            value.classList.remove('active');
+            console.log('false');
+        }
+    })}
+
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
+            skillsValueAnimation(false);
             if (entry.boundingClientRect.y < 0) {
                 selectedNavIndex = index + 1;
+                entry.target.id === 'about' && skillsValueAnimation(true);
             } else {
                 selectedNavIndex = index - 1;
+                entry.target.id === 'work' && skillsValueAnimation(true);
             }
         }
     })

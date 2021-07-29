@@ -46,7 +46,7 @@
         <section id="home">
             <img src="./imgs/profile.jpg" alt="Dae-seung's profile" class="home__avatar" />
             <h1 class="home__title">Hello world!<br />개발자 대승이의 포트폴리오입니다</h1>
-            <h2 class="home__description">#프론트엔드 #반응형웹 #싱글페이지어플리케이션</h2>
+            <h2 class="home__description">#프론트엔드 #반응형웹 #싱글페이지어플리케이션 #웹앱</h2>
             <a href="https://github.com/ips3471" target="blank">
                 <button  data-link="#contact" class="button__contactme">CONTACT ME</button>
             </a>
@@ -98,8 +98,12 @@
         <!-- Skills -->
         <section id="skills">
             <h1 class="skills__title">Skills</h1>
-            <h2 class="skills__description">Skills & Attributes</h2>
-            <p class="skills__paragraph section-width">Experience with all phases of the software life-cycle. Passion for learning new technologies. Capable of working within a team environment and independently. Ability to plan and time schedule, work under strict time pressure and adapt quickly when needed.</p>
+            <h2 class="skills__description">기술 & 숙련도</h2>
+            <p class="skills__paragraph section-width">
+                기본적인 markup과 styling은 물론 JavaScript 문법에 익숙해지고 기초를 확실하게 다지기 위해 다양한 데모 프로젝트에 참여했습니다. 
+                단순히 남의 코드를 따라적는 방식을 경계하며 wireframing부터 refactoring까지 모든 단계를 스스로 경험하며 코드친화력을 높여왔습니다.
+                또한 신기술 학습에 대한 열정은 React JS Library와 Firebase를 이용한 Serverless 서비스 구현까지 가능하게 했습니다.
+                이러한 흔적들은 아래 My work 카테고리에서 확인하실 수 있습니다.
             <div class="skills__chart section-width">
                 <div class="skills__chart__skillset">
                     <div class="skills__chart__skillset__title">Skills</div>
@@ -154,13 +158,13 @@
                     <div class="skills__chart__tools__title">Tools</div>
                     <ul class="skills__chart__tools__items">
                         <li class="skills__chart__tools__item">Visual Studio Code</li>
-
+                        <li class="skills__chart__tools__item">Canva</li>
                     </ul>
                 </div>
                 <div class="skills__chart__etc">
                     <div class="skills__chart__etc__title">Etc</div>
                     <ul class="skills__chart__etc__items">
-                        <li class="skills__chart__etc__items">Git</li>
+                        <li class="skills__chart__etc__items">Github</li>
                         <li class="skills__chart__etc__items">Yarn & npm</li>
 
                     </ul>
@@ -171,13 +175,13 @@
         <!-- Work -->
         <section id="work">
             <h1 class="work__title">My work</h1>
-            <h3 class="work__description">Projects</h3>
+            <h3 class="work__description">프로젝트</h3>
             <div class="work__btns">
                 <button class="work__btn active" data-filter="all">All
-                    <span class="work__count">7</span>
+                    <span class="work__count">6</span>
                 </button>
                 <button class="work__btn" data-filter="front-end">Front-end
-                    <span class="work__count">5</span>
+                    <span class="work__count">4</span>
                 </button>
                 <button class="work__btn" data-filter="back-end">Back-end
                     <span class="work__count">1</span>
@@ -192,11 +196,11 @@
                     href="https://github.com/ips3471/modu" 
                     target="blank">
                     <img 
-                    src="./imgs/favicon.png"
+                    src="./imgs/modu.png""
                     class="work__item__img">
                 <div class="work__item__onmouse">
                     <h3 class="work__item__onmouse__title">모두의마블 계산기</h3>
-                    <span class="work__item__onmouse__description">Clone coding with HTML and CSS</span>
+                    <span class="work__item__onmouse__description">빠른 게임진행을 위한 전용 계산기</span>
                 </div>
                     </a>
             </div>
@@ -214,9 +218,8 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item" data-type="front-end">
+                <!-- <div class="work__item" data-type="front-end">
                     <a
-                    
                     href="#a" 
                     target="blank">
                     <img 
@@ -227,17 +230,17 @@
                     <span class="work__item__onmouse__description">Clone coding with HTML and CSS</span>
                 </div>
                     </a>
-            </div>
+            </div> -->
                 <div class="work__item" data-type="front-end">
                     <a
                     href="https://github.com/ips3471/portfolio" 
                     target="blank">
                     <img 
-                    src="./imgs/favicon.png" 
+                    src="./imgs/port.png" 
                     class="work__item__img">
                 <div class="work__item__onmouse">
-                    <h3 class="work__item__onmouse__title">Portfolio</h3>
-                    <span class="work__item__onmouse__description">Clone coding with HTML and CSS</span>
+                    <h3 class="work__item__onmouse__title">포트폴리오 웹사이트</h3>
+                    <span class="work__item__onmouse__description">모든 기기를 지원하는 반응형 웹</span>
                 </div>
                     </a>
             </div>
@@ -254,33 +257,30 @@
                 </div>
                     </a>
             </div>
-                <div class="work__item" data-type="back-end">
+                <button onClick="makeAlert('(비어있음) 데모용 컨텐츠입니다!');" class="work__item" data-type="back-end">
                     <a
-                    
-                    href="#a" 
-                    target="blank">
+                    href="#a">
                     <img 
                     src="./imgs/favicon.png" 
                     class="work__item__img">
                 <div class="work__item__onmouse">
                     <h3 class="work__item__onmouse__title">No work</h3>
-                    <span class="work__item__onmouse__description">This is for demo</span>
+                    <span class="work__item__onmouse__description">This is just for demo</span>
                 </div>
                     </a>
-            </div>
-                <div class="work__item" data-type="mobile">
+            </button>
+                <button onClick="makeAlert('(비어있음) 데모용 컨텐츠입니다!');" class="work__item" data-type="mobile">
                     <a
-                    href="#a" 
-                    target="blank">
+                    href="#a">
                     <img 
                     src="./imgs/favicon.png" 
                     class="work__item__img">
                 <div class="work__item__onmouse">
                     <h3 class="work__item__onmouse__title">No work</h3>
-                    <span class="work__item__onmouse__description">This is for demo</span>
+                    <span class="work__item__onmouse__description">This is just for demo</span>
                 </div>
                     </a>
-            </div>
+            </button>
                 
 
 
