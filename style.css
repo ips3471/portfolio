@@ -653,8 +653,8 @@ p {
 	}
 	.navbar__menu__item::after {
 		content: '';
-		display: inline-block;
-		width: 90%;
+		display: block;
+		width: 100%;
 		background-color: var(--color-white);
 		height: 1px;
 		opacity: 0.4;
