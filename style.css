@@ -686,6 +686,7 @@ p {
 	}
 	.about__card__description {
 		padding-bottom: 1rem;
+		width: 80vw;
 	}
 
 	/* Skills */

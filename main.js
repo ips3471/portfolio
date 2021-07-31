@@ -135,8 +135,9 @@ const sectionIds = [
 ];
 const sections = sectionIds.map(id => document.querySelector(id));
 const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
-let selectedNavItem = navItems[0];
+let selectedNavItem;
 let selectedNavIndex;
+selectNavMenu(navItems[0]);
 const observerOptions = {
     root: null, //viewport
     rootMargin: '0px',
@@ -152,10 +153,8 @@ function skillsValueAnimation(boal) {
     skillValues.forEach(value => {
         if (boal === true) {
             value.classList.add('active');
-            console.log('true');
         } else {
             value.classList.remove('active');
-            console.log('false');
         }
     })}
 
