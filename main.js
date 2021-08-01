@@ -141,7 +141,7 @@ selectNavMenu(navItems[0]);
 const observerOptions = {
     root: null, //viewport
     rootMargin: '0px',
-    threshold: 0.4,
+    threshold: 0.55,
 }
 function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.remove('active');

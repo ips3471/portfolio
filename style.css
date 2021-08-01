@@ -17,7 +17,7 @@
 	--font-size-large: 2.1rem;
 	--font-size-medium: 1.6rem;
 	--font-size-small: 1.5rem;
-	--font-size-tiny: 1rem;
+	--font-size-tiny: 0.9rem;
 	/* Font weight */
 	--weight--bold: 800;
 	--weight--regular: 550;
@@ -498,6 +498,7 @@ p {
 .work__item__onmouse__description {
 	padding: 0 1rem;
 	color: var(--color-dark-white);
+	font-size: var(--font-size-tiny);
 }
 .work__item.hidden {
 	display: none;
