@@ -668,6 +668,12 @@ p {
 	}
 
 	/* Home */
+	#home {
+		height: 100vh;
+	}
+	.home__avatar {
+		margin-top: 5vh;
+	}
 	.home__title {
 		padding: 0 0.5rem;
 		font-size: var(--font-size-large);
@@ -675,6 +681,9 @@ p {
 	.home__description {
 		padding: 0 1rem;
 		font-size: var(--font-size-small);
+	}
+	.button__contactme {
+		margin-top: 5vh;
 	}
 
 	/* About */
