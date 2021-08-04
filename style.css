@@ -634,6 +634,7 @@ p {
 		--speed-transition: 300ms;
 	}
 	#navbar {
+		/* height: 6.5vh; */
 		flex-direction: column;
 		align-items: flex-start;
 		padding-top: var(--space-text);

@@ -17,15 +17,16 @@ const navbar__menu = document.querySelector('.navbar__menu');
 navbarToggleBtn.addEventListener('click', () => {
     navbar__menu.classList.toggle('visible');
 })
+const homeBottom = home.getBoundingClientRect().bottom;
+const navbarHeight = navbar.getBoundingClientRect().height;
 function navbarEffect() {
-    const homeBottom = home.getBoundingClientRect().bottom;
-    const navbarHeight = navbar.getBoundingClientRect().height;
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar-color');
     } else {
         navbar.classList.remove('navbar-color');
     }
-    const navOpacity = homeBottom / window.scrollY;
+    const navOpacity =  1 - (window.scrollY / homeBottom) ;
+    console.log(navOpacity);
     home.style.opacity = navOpacity;
 }
 
