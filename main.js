@@ -114,10 +114,18 @@ window.addEventListener('scroll', () => {
     displayArrowBtn();
 })
 
+
 navbar.addEventListener('click', (event) => {
     let target = event.target.dataset.link; //#home ~ #contact
     target && navbar__menu.classList.toggle('visible');
     toSection(target);
+    if ( target === '#skills') {
+    const skillsIndex = sectionIds.indexOf(`#skills`);
+    let latency = Math.abs(skillsIndex - selectedNavIndex) * 300;
+        setTimeout(() => {
+            skillsValueAnimation(true);
+        }, latency)
+    }
 })
 
 contactBtn.addEventListener('click', () => {
@@ -145,7 +153,7 @@ selectNavMenu(navItems[0]);
 const observerOptions = {
     root: null, //viewport
     rootMargin: '0px',
-    threshold: 0.3,
+    threshold: 0.4,
 }
 function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.remove('active');
@@ -154,6 +162,7 @@ function selectNavMenu(selected) {
 }
 const skillValues = document.querySelectorAll('.skills__chart__skillset__item__value');
 function skillsValueAnimation(boal) {
+    console.log(boal);
     skillValues.forEach(value => {
         if (boal === true) {
             value.classList.add('active');
@@ -168,11 +177,9 @@ const observerCallback = (entries, observer) => {
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
             skillsValueAnimation(false);
-            console.log(selectedNavIndex, entry.target.id);
             if (entry.boundingClientRect.y < 0) {
                 selectedNavIndex = index + 1;
                 active === '#about' && skillsValueAnimation(true);
-
             } else {
                 selectedNavIndex = index - 1;
                 active === '#work' && skillsValueAnimation(true);
@@ -184,6 +191,5 @@ const observerCallback = (entries, observer) => {
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
 sections.forEach(section => {
-    console.log(section);
     observer.observe(section)
 });

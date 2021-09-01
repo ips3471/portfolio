@@ -28,7 +28,7 @@
 	--space-column: 2rem;
 	--button-radius: 4px;
 	--item-card: 8rem;
-	--section-padding-top: 2.5rem;
+	--section-padding-vertical: 2.5rem;
 	--paragraph-padding: 8rem
 
 	/* Animation */
@@ -228,7 +228,7 @@ p {
 	padding: 0 8rem;
 }
 .about__title {
-	padding-top: var(--section-padding-top);
+	padding-top: var(--section-padding-vertical);
 }
 .about__cards {
 	display: flex;
@@ -318,7 +318,7 @@ p {
 	background-color: var(--color-yellow);
 }
 .skills__title {
-	padding-top: var(--section-padding-top);
+	padding-top: var(--section-padding-vertical);
 }
 .skills__paragraph {
 	padding: 0 8rem var(--space-column) 8rem;
@@ -334,6 +334,7 @@ p {
 	display: flex;
 	justify-content: center;
 	padding: 0 calc(var(--space-side) * 2.5);
+	padding-bottom: var(--section-padding-vertical);
 }
 .skills__chart__skillset {
 	background-color: var(--color-dark-grey);
@@ -405,7 +406,7 @@ p {
 	color: var(--color-white);
 }
 .work__title {
-	padding-top: var(--section-padding-top);
+	padding-top: var(--section-padding-vertical);
 }
 .work__btns {
 	margin-bottom: var(--space-side);
@@ -764,7 +765,7 @@ td.head {
 		flex-direction: column;
 	}
 	.work__title {
-		padding-top: var(--section-padding-top);
+		padding-top: var(--section-padding-vertical);
 	}
 	.work__btn {
 		display: inline-block;
@@ -776,7 +777,7 @@ td.head {
 
 	/* Testimonials */
 	#testimonials {
-		padding-bottom: var(--section-padding-top);
+		padding-bottom: var(--section-padding-vertical);
 	}
 	.testimonials__description {
 		font-size: var(--font-size-small);
