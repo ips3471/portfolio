@@ -121,7 +121,7 @@ navbar.addEventListener('click', (event) => {
     toSection(target);
     if ( target === '#skills') {
     const skillsIndex = sectionIds.indexOf(`#skills`);
-    let latency = Math.abs(skillsIndex - selectedNavIndex) * 300;
+    let latency = Math.abs(skillsIndex - selectedNavIndex) * 600;
         setTimeout(() => {
             skillsValueAnimation(true);
         }, latency)
@@ -153,7 +153,7 @@ selectNavMenu(navItems[0]);
 const observerOptions = {
     root: null, //viewport
     rootMargin: '0px',
-    threshold: 0.4,
+    threshold: 0.3,
 }
 function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.remove('active');
@@ -161,13 +161,16 @@ function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.add('active');
 }
 const skillValues = document.querySelectorAll('.skills__chart__skillset__item__value');
+let skillsAnimationSwitch = false;
 function skillsValueAnimation(boal) {
     console.log(boal);
     skillValues.forEach(value => {
         if (boal === true) {
             value.classList.add('active');
+            skillsAnimationSwitch = true;
         } else {
             value.classList.contains('active') && value.classList.remove('active');
+            skillsAnimationSwitch = false;
         }
     })}
 
@@ -176,13 +179,12 @@ const observerCallback = (entries, observer) => {
         let active = document.querySelector('.navbar__menu__item.active').dataset.link;
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
-            skillsValueAnimation(false);
             if (entry.boundingClientRect.y < 0) {
                 selectedNavIndex = index + 1;
-                active === '#about' && skillsValueAnimation(true);
+                active === '#about' ? skillsValueAnimation(true) : skillsAnimationSwitch && skillsValueAnimation(false);
             } else {
                 selectedNavIndex = index - 1;
-                active === '#work' && skillsValueAnimation(true);
+                active === '#work' ? skillsValueAnimation(true) : skillsAnimationSwitch && skillsValueAnimation(false);
 
             }
         }
