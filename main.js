@@ -26,7 +26,6 @@ function navbarEffect() {
         navbar.classList.remove('navbar-color');
     }
     const navOpacity =  1 - (window.scrollY / homeBottom) ;
-    console.log(navOpacity);
     home.style.opacity = navOpacity;
 }
 
@@ -95,11 +94,15 @@ function displayArrowBtn() {
 
 
 window.addEventListener('wheel', () => {
+    // console.log(`scrollY ${window.scrollY}`);
+    // console.log(window.innerHeight);
+    // console.log(document.body.clientHeight);
     if (window.scrollY === 0) {
         selectedNavIndex = 0;
     }
     else if (Math.ceil(window.scrollY + window.innerHeight) >= document.body.clientHeight) {
         selectedNavIndex = navItems.length - 1;
+
     }
     selectNavMenu(navItems[selectedNavIndex]);
 })
@@ -117,8 +120,8 @@ navbar.addEventListener('click', (event) => {
     toSection(target);
 })
 
-contactBtn.addEventListener('click', (event) => {
-    toSection(event);
+contactBtn.addEventListener('click', () => {
+    toSection('#about');
 })
 
 
@@ -142,7 +145,7 @@ selectNavMenu(navItems[0]);
 const observerOptions = {
     root: null, //viewport
     rootMargin: '0px',
-    threshold: 0.55,
+    threshold: 0.3,
 }
 function selectNavMenu(selected) {
     selectedNavItem && selectedNavItem.classList.remove('active');
@@ -155,25 +158,32 @@ function skillsValueAnimation(boal) {
         if (boal === true) {
             value.classList.add('active');
         } else {
-            value.classList.remove('active');
+            value.classList.contains('active') && value.classList.remove('active');
         }
     })}
 
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
+        let active = document.querySelector('.navbar__menu__item.active').dataset.link;
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
             skillsValueAnimation(false);
+            console.log(selectedNavIndex, entry.target.id);
             if (entry.boundingClientRect.y < 0) {
                 selectedNavIndex = index + 1;
-                entry.target.id === 'about' && skillsValueAnimation(true);
+                active === '#about' && skillsValueAnimation(true);
+
             } else {
                 selectedNavIndex = index - 1;
-                entry.target.id === 'work' && skillsValueAnimation(true);
+                active === '#work' && skillsValueAnimation(true);
+
             }
         }
     })
 }
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(section => {
+    console.log(section);
+    observer.observe(section)
+});
