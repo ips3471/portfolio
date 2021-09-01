@@ -173,10 +173,11 @@ function skillsValueAnimation(boal) {
             skillsAnimationSwitch = false;
         }
     })}
-
+let active = '#home';
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
-        let active = document.querySelector('.navbar__menu__item.active').dataset.link;
+        const activeTarget = document.querySelector('.navbar__menu__item.active')
+        active = activeTarget && activeTarget.dataset.link;
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
             const index = sectionIds.indexOf(`#${entry.target.id}`);
             if (entry.boundingClientRect.y < 0) {
